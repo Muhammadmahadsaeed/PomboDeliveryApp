@@ -1,0 +1,93 @@
+[
+    {
+      "id": "1",
+      "name": "Adyar",
+      "isVegetarian": true,
+      "cuisine": "South Indian",
+      "image": "http://tutofox.com/foodapp//food/american/beef-grill.png",
+      "rating": 4,
+      "location": "Velacherry"
+    },
+    {
+      "id": "2",
+      "name": "Anjappar",
+      "isVegetarian": false,
+      "cuisine": "South Indian",
+      "image": "http://tutofox.com/foodapp//food/american/chicken-piccata.png",
+      "rating": 3,
+      "location": "Okkiyampet"
+    },
+    {
+      "id": "3",
+      "name": "Buhari",
+      "isVegetarian": false,
+      "cuisine": "North Indian",
+      "image": "http://tutofox.com/foodapp//food/american/burger-2.png",
+      "rating": 4,
+      "location": "Karapakkam"
+    },
+    {
+      "id": "4",
+      "name": "Sree",
+      "isVegetarian": true,
+      "cuisine": "North Indian",
+      "image": "http://tutofox.com/foodapp//food/american/burger-4.png",
+      "rating": 5,
+      "location": "SRP Tools"
+    },
+    {
+      "id": "5",
+      "name": "Hot Chips",
+      "isVegetarian": true,
+      "cuisine": "South Indian",
+      "image": "http://tutofox.com/foodapp//food/american/burger-5.png",
+      "rating": 5,
+      "location": "Thiruvanmiyur"
+    },
+    {
+      "id": "6",
+      "name": "Paradise",
+      "isVegetarian": false,
+      "cuisine": "South Indian",
+      "image": "http://tutofox.com/foodapp//food/american/burger-1.png",
+      "rating": 4,
+      "location": "SRP Tools"
+    },
+    {
+      "id": "7",
+      "name": "Saravana",
+      "isVegetarian": true,
+      "cuisine": "South Indian",
+      "image": "http://tutofox.com/foodapp//food/american/salmon-romesco.png",
+      "rating": 5,
+      "location": "Kandan Chavadi"
+    },
+    {
+      "id": "8",
+      "name": "Dindigul",
+      "isVegetarian": false,
+      "cuisine": "South Indian",
+      "image": "http://tutofox.com/foodapp//food/american/salmon-grill.png",
+      "rating": 3,
+      "location": "Karapakkam"
+    },
+    {
+      "id": "9",
+      "name": "Thambi",
+      "isVegetarian": false,
+      "cuisine": "South Indian",
+      "image": "http://tutofox.com/foodapp//food/american/chicken-grill.png",
+      "rating": 5,
+      "location": "Okkiyampet"
+    },
+    {
+      "id": "10",
+      "name": "Vasantha",
+      "isVegetarian": true,
+      "cuisine": "South Indian",
+      "image": "http://tutofox.com/foodapp//food/american/chicken-romesco.png",
+      "rating": 4,
+      "location": "Adyar"
+    }
+  ]
+  

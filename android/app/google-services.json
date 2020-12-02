@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1007219357066",
+    "firebase_url": "https://pombodelivery-7019c.firebaseio.com",
+    "project_id": "pombodelivery-7019c",
+    "storage_bucket": "pombodelivery-7019c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007219357066:android:0cb47151393fd5b2dc8473",
+        "android_client_info": {
+          "package_name": "com.pombodelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007219357066-75o75di95jbk3ss2qt0vajq9ti5npbjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWIa2voi9UPHW8gNxk_846HvXiHzwhj1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007219357066-75o75di95jbk3ss2qt0vajq9ti5npbjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
