@@ -9,7 +9,7 @@ function login(email, pwd) {
       .then((res) => {
         firebase.auth().onAuthStateChanged(function (user) {
           if (user.emailVerified) {
-            user.sendEmailVerification();
+            // user.sendEmailVerification();
             firebase
               .firestore()
               .collection('users')
@@ -24,8 +24,8 @@ function login(email, pwd) {
                 reject(err);
               });
           } else {
-           
-            reject(err);
+            reject("erorr")
+            // reject(err);
           }
         });
       })
@@ -45,11 +45,12 @@ function signUp(firstName, lastName, pNum, password, email, address) {
           name: firstName,
           lastName: lastName,
           phone: pNum,
-          address: [address],
+          address: address,
           email: res.user.email,
           role: 'user',
           resId: res.user.uid,
           paymentMethod: '',
+          deliveryAddress: []
         };
         firebase.auth().onAuthStateChanged(function (user) {
           user.sendEmailVerification();
@@ -62,9 +63,9 @@ function signUp(firstName, lastName, pNum, password, email, address) {
           .then(function (querySnapshot) {
             resolve(user);
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          // .catch((err) => {
+          //   console.log(err);
+          // });
       })
       .catch((error) => {
         reject(error);

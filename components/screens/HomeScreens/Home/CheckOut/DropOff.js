@@ -55,10 +55,11 @@ class DropOffScreen extends Component {
       .firestore()
       .collection('users')
       .doc(userId)
-      .update({address: firebase.firestore.FieldValue.arrayUnion({...addressObj})})
+      .update({deliveryAddress: firebase.firestore.FieldValue.arrayUnion({...addressObj})})
       .then((res) => {
-        this.props.user.user.user.lastDeliveryAddress = addressObj;
-        this.props.store_user(this.props.user.user.user);
+        const user = this.props.user.user.user;
+        user.lastDeliveryAddress = addressObj;
+        this.props.store_user(user);
         this.setState({isloading: false});
         this.props.navigation.navigate('CheckOutDetailScreen');
       });

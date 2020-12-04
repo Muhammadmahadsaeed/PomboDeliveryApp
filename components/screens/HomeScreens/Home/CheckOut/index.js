@@ -12,6 +12,7 @@ import DeliverySchedule from './DeliverySchedule'
 import DropOffScreen from './DropOff'
 import DropOffTittle from './DropOffTittle'
 import DisherTipScreen from './DisherTip'
+import PaypalScreen from "./Paypal";
 export{
     
     CheckOut,
@@ -27,5 +28,6 @@ export{
     DeliverySchedule,
     DropOffScreen,
     DropOffTittle,
-    DisherTipScreen
+    DisherTipScreen,
+    PaypalScreen
 }

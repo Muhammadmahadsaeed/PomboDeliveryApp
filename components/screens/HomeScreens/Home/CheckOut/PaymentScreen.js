@@ -77,18 +77,18 @@ class PaymentScreen extends Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: '10',
+          amount: Math.round(this.state.amount),
           currency: 'usd',
           token: this.state.token,
         }),
       })
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((responseJson) => {
         console.log(responseJson)
-        // this.updatePaymentMethod(this.state.token);
+        this.updatePaymentMethod(this.state.token);
       })
       .catch((error) => {
-        console.error(error);
+        console.log("=============",error);
       });;
   }
   
@@ -96,24 +96,24 @@ class PaymentScreen extends Component {
   updatePaymentMethod(token) {
     console.log("========")
     const card = [];
-    card.push(token);
-    this.props.user.user.user.paymentmethod = card;
-    this.props.store_user(this.props.user.user.user);
+    // card.push(token);
+    // this.props.user.user.user.paymentmethod = card;
+    // this.props.store_user(this.props.user.user.user);
     this.setState({isLoading: false});
-    this.props.navigation.navigate('CheckOutDetailScreen');
+    // this.props.navigation.navigate('CheckOutDetailScreen');
   }
-  handleResponse = (data) => {
-    if (data.title === 'success') {
-      this.setState({showModal: false, status: 'Complete'});
-    } else if (data.title === 'cancel') {
-      this.setState({showModal: false, status: 'Cancelled'});
-    } else {
-      return;
-    }
-  };
+  // handleResponse = (data) => {
+  //   if (data.title === 'success') {
+  //     this.setState({showModal: false, status: 'Complete'});
+  //   } else if (data.title === 'cancel') {
+  //     this.setState({showModal: false, status: 'Cancelled'});
+  //   } else {
+  //     return;
+  //   }
+  // };
   goToPaypal() {
-    
-    this.setState({ showModal: true })
+    this.props.navigation.navigate('Paypal')
+    // this.setState({ showModal: true })
   }
 
   render() {
@@ -197,15 +197,17 @@ class PaymentScreen extends Component {
             <ActivityIndicator size="large" color="#e9ba00" />
           </View>
         ) : null}
-        <Modal
+        {/* <Modal
           visible={this.state.showModal}
           onRequestClose={() => this.setState({showModal: false})}>
           <WebView
             source={{uri: 'https://pombo-paypal.herokuapp.com/'}}
             onNavigationStateChange={(data) => this.handleResponse(data)}
             injectedJavaScript={`document.f1.submit()`}
+            startInLoadingState={true}
+            
           />
-        </Modal>
+        </Modal> */}
       </View>
     );
   }

@@ -690,6 +690,31 @@ const HomeBottom = createStackNavigator({
      
     }),
   },
+  Paypal: {
+    screen: CheckOutScreen.PaypalScreen,
+    navigationOptions: ({navigation}) => ({
+      safeAreaInsets: {top: 0},
+      headerTitle: '',
+      headerBackground: () => (
+        <LinearGradient
+          colors={['#481b74', '#6a349f', '#481b74']}
+          start={{x: 0, y: 0.5}}
+          end={{x: 1, y: 1}}
+          style={{flex: 1}}
+        />
+      ),
+      headerTintColor: '#e9ba00',
+      headerStyle: {
+        shadowOffset: {
+          height: 0,
+          width: 0,
+        },
+        shadowOpacity: 0,
+        elevation: 0,
+      },
+     
+    }),
+  },
   ScheduleScreen: {
     screen: CheckOutScreen.DeliverySchedule,
     navigationOptions: ({navigation}) => ({

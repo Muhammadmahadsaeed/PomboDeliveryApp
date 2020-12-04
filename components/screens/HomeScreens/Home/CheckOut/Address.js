@@ -28,7 +28,7 @@ class AddressScreen extends Component {
       .doc(userId)
       .get()
       .then((query) => {
-        this.setState({user: query.data().address, loading: false});
+        this.setState({user: query.data().deliveryAddress, loading: false});
       });
   }
 
@@ -100,21 +100,17 @@ class AddressScreen extends Component {
                         {item.ZipCode}
                       </Text>
                     </View>
+
                     <View
                       style={{
-                        flexDirection: 'row',
+                        height: 22,
+                        width: 22,
+                        marginLeft: 5,
                       }}>
-                      <View
-                        style={{
-                          height: 22,
-                          width: 22,
-                          marginLeft: 5,
-                        }}>
-                        <Image
-                          style={{height: '100%', width: '100%'}}
-                          source={require('../../../../../assets/arrow.png')}
-                        />
-                      </View>
+                      <Image
+                        style={{height: '100%', width: '100%'}}
+                        source={require('../../../../../assets/arrow.png')}
+                      />
                     </View>
                   </TouchableOpacity>
                 );
@@ -150,7 +146,7 @@ const styles = StyleSheet.create({
     color: '#481b74',
   },
   notificationBox: {
-    flex: 1,
+    
     marginVertical: 1,
     flexDirection: 'row',
     borderRadius: 10,
@@ -167,6 +163,7 @@ const styles = StyleSheet.create({
   },
   addressView: {
     flex: 1,
+    
   },
   buttonStyle: {
     height: 50,

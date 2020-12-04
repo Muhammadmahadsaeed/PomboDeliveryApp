@@ -30,8 +30,9 @@ class DisherTipScreen extends Component {
   updateTips() {
     this.setState({isloading: true});
     const tip = this.state.tip;
-    this.props.user.user.user.tip = tip;
-    this.props.store_user(this.props.user.user.user);
+    const user = this.props.user.user.user;
+    user.tips = tip;
+    this.props.store_user(user);
     this.setState({isloading: false});
     this.props.navigation.navigate('CheckOutDetailScreen');
   }

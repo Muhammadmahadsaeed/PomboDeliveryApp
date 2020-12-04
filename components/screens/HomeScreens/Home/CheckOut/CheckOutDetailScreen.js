@@ -37,7 +37,7 @@ class CheckOutDetailScreen extends Component {
   componentDidMount() {
     const tips = [];
     this.setState({user: this.props.user.user});
-    console.log("===========",this.props.user.user);
+    console.log('===========', this.props.user.user);
     const orderDetail = this.props.navigation.getParam('orders');
     const totalAmount = this.props.navigation.getParam('totalAmount');
 
@@ -147,15 +147,21 @@ class CheckOutDetailScreen extends Component {
                     alignItems: 'center',
                   }}>
                   <View>
-                    <Text style={styles.description}>
-                      {user.lastDeliveryAddress.address}
-                    </Text>
-                    <Text style={styles.description}>
-                      {user.lastDeliveryAddress.streetName} #{' '}
-                      {user.lastDeliveryAddress.streetNum},{' '}
-                      {user.lastDeliveryAddress.Appartment},{' '}
-                      {user.lastDeliveryAddress.ZipCode}
-                    </Text>
+                    {user.lastDeliveryAddress ? (
+                      <View>
+                        <Text style={styles.description}>
+                          {user.lastDeliveryAddress.address}
+                        </Text>
+                        <Text style={styles.description}>
+                          {user.lastDeliveryAddress.streetName} #{' '}
+                          {user.lastDeliveryAddress.streetNum},{' '}
+                          {user.lastDeliveryAddress.Appartment},{' '}
+                          {user.lastDeliveryAddress.ZipCode}
+                        </Text>
+                      </View>
+                    ) : (
+                      <Text style={styles.description}>{user.address}</Text>
+                    )}
                   </View>
 
                   <View

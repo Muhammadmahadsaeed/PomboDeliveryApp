@@ -1,0 +1,232 @@
+```<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(232, 239, 253);
+            
+        }
+        @font-face{
+            font-family: "lato-light";
+            src: url("../../../assets/fonts/lato-light.ttf")
+        }
+        @font-face{
+            font-family: "lato-regular";
+            src: url("../../../assets/fonts/lato-regular.ttf")
+        }
+        @font-face{
+            font-family: "lato-thinitalic";
+            src: url("../../../assets/fonts/Lato-ThinItalic.ttf")
+        }
+        @font-face{
+            font-family: "Black";
+            src: url("../../../assets/fonts/CircularStd-Black.otf")
+        }
+        @font-face{
+            font-family: "Book";
+            src: url("../../../assets/fonts/CircularStd-Book.otf")
+        }
+        @font-face{
+            font-family: "Medium";
+            src: url("../../../assets/fonts/CircularStd-Medium.otf")
+        }
+        * {
+            font-family: "Book";
+        }
+
+        #mainDiv {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            width: 100%;
+        }
+        .mainDiv {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        iframe {
+            border: none !important;
+        }
+
+        /* .depth {
+            display: block;
+            border: 1px solid silver;
+            background: linear-gradient(#eee, #fff);
+            transition: all 0.3s ease-out;
+            padding: 5px;
+            width: fit-content;
+            color: #555;
+            margin-bottom: 10px;
+        } */
+
+        .depth:focus {
+            outline: none;
+            background-position: 0 -1.7em;
+        }
+        /* #points {
+            display: none ;
+        } */
+
+.depth {
+    height: 44px;
+    width: fit-content;
+    padding: 0 10px;
+    border: 1px solid #9da3a6;
+    background: #fff;
+    text-overflow: ellipsis;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #000;
+    font-size: 1em;
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    direction: ltr;
+    margin-bottom: 10px;
+}
+
+        .header {
+            display: flex;
+            background: url("https://www.paypalobjects.com/webstatic/en_US/mktg/about/hero-about.jpg") no-repeat;
+            width: 100vw;
+            height: 40vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .heading {
+            text-align: center;
+            color: #fff;
+            font-weight: lighter;
+            font-family: "lato-light";
+            width: 70%;
+        }
+        .logo {
+            background: url(https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom-white.svg) center top no-repeat;
+            width: 126px;
+            height: 33px;
+            background-size: 124px 33px;
+            padding: 5px;
+        }
+        .info {
+            width: 70%;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body style="margin: auto 0;">
+    <div class="header">
+        <p class="logo"></p>
+        <h2 class="heading">At PayPal, we put people at the center of everything we do.</h2>
+    </div>
+    <div id="mainDiv">
+        <div id="pointsDiv" class="mainDiv">
+            <p id="infoPar" class="info"> Pay 'USD'$1, to get 100 points. Write points below
+            </p>
+            <p id="para"></p>
+            <input id="points" class="depth" type="number" placeholder="Put Points here" onkeyup="points()"  />
+        </div>
+        <div id="paypal-button"></div>
+    </div>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        var payload = {
+            name: "Item",
+            // ammount
+            total: "0",
+        }
+
+
+        function points() {
+            if (document.getElementById('points').value && (Number(document.getElementById('points').value) > 0)) {
+                document.getElementById('points').value = Number(document.getElementById('points').value).toFixed()
+                var dollor = (document.getElementById('points').value / 100).toFixed(2);
+                payload.total = dollor;
+                document.getElementById('para').innerText = `Points  ${document.getElementById('points').value}, $ ${dollor}`
+            }
+            else {
+                document.getElementById('para').innerText = "";
+                payload.total = "0";
+            }
+        }
+
+        document.addEventListener("message", function (event) {
+            console.warn(event.data)
+            var obj = JSON.parse(event.data)
+            if (obj.product) {
+                payload.total = obj.product;
+                document.getElementById("points").style.display = "none";
+                document.getElementById("infoPar").style.width = "90%";
+                document.getElementById("infoPar").innerText = "PayPal is the faster, more secure way to pay online. It lets you pay for your favorite things at millions of online stores in the U.S. and across 203 global markets—all without the hassle of converting currency. So it’s just as easy to know how much you’re spending as it is to spend it.";
+            }
+        });
+
+        paypal.Button.render({
+
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: "AQFyHAN1HJ6E0D2GAdwmubfDdgKUju3z0iPtKJ6sZ58HZqIAhnzFW70j8qoJuOFu8KRcErcI5MW8FPme",//'AQMy2vZPc13ks0LoYwSerjhK7Ab-NTifOetGdu7lTjC4UUF37Aqywbat_Ni83-DD3DxCZtuQgYSzQ-Ih',
+                production: 'demo_production_client_id'
+            },
+
+            commit: true,
+
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+            },
+
+            // Set up a payment
+            payment: function (data, actions) {
+                console.log(payload, "payload")
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: (payload.total).toString(),//${ this.state.totalAmmount },
+                            currency: 'USD',
+                        },
+                    }],
+                    note_to_payer: 'Contact us for any questions on your order.'
+                });
+            },
+
+            // Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function (a) {
+                    // Show a confirmation message to the buyer
+                    console.log("res:", a)
+                    window.postMessage(JSON.stringify({ type: "success", res: a, points: Number(payload.total) * 100 }))
+                }).catch(function (e) {
+                    console.log("err:", e)
+                    window.postMessage(JSON.stringify({ type: "error", res: e, points: 0 }))
+                });
+            }
+        }, '#paypal-button');
+    </script>
+</body>
+
+</html>```

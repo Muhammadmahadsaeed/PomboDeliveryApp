@@ -75,31 +75,38 @@ class DeliverySchedule extends Component {
     this.hideTomorrowDatePicker();
   };
   selectTime() {
-   
+    const user = this.props.user.user
     this.setState({isloading: true});
     const {chosenTodayTime, chosenTomorrowTime} = this.state;
-    if (chosenTodayTime && chosenTomorrowTime) {
-      this.setState(
-        {
-          flashMessage: true,
-          chosenTodayTime: '',
-          chosenTomorrowTime: '',
-          isloading: false
-        },
-        () => {
-          setTimeout(() => this.closeFlashMessage(), 3000);
-        },
-      );
-    } else if (chosenTodayTime) {
-      this.props.user.user.deliveryDate = this.state.todayDate
-      this.props.user.user.deliveryTime = this.state.chosenTodayTime
+    // if (chosenTodayTime && chosenTomorrowTime) {
+    //   this.setState(
+    //     {
+    //       flashMessage: true,
+    //       chosenTodayTime: '',
+    //       chosenTomorrowTime: '',
+    //       isloading: false
+    //     },
+    //     () => {
+    //       setTimeout(() => this.closeFlashMessage(), 3000);
+    //     },
+    //   );
+    // } 
+    if (chosenTodayTime) {
+      user.deliveryDate = this.state.todayDate
+      user.deliveryTime = this.state.chosenTodayTime
+      console.log(user)
+      // this.props.user.user.deliveryDate = this.state.todayDate
+      // this.props.user.user.deliveryTime = this.state.chosenTodayTime
       this.setState({isloading: false});
-      this.props.navigation.navigate('CheckOutDetailScreen');
+      // this.props.navigation.navigate('CheckOutDetailScreen');
     } else {
-      this.props.user.user.deliveryDate = this.state.tomorrowDate
-      this.props.user.user.deliveryTime = this.state.chosenTomorrowTime
+      user.deliveryDate = this.state.tomorrowDate
+      user.deliveryTime = this.state.chosenTomorrowTime
+      console.log(user)
+      // this.props.user.user.deliveryDate = this.state.tomorrowDate
+      // this.props.user.user.deliveryTime = this.state.chosenTomorrowTime
       this.setState({isloading: false});
-      this.props.navigation.navigate('CheckOutDetailScreen');
+      // this.props.navigation.navigate('CheckOutDetailScreen');
     }
   }
   closeFlashMessage() {
